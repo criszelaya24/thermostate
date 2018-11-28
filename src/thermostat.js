@@ -26,6 +26,11 @@ Thermostat.prototype.down = function() {
 	this.temperature -= 1;
 };
 
+Thermostat.prototype.resetTemperature = function() {
+	this.DEFAULT_TEMPERATURE = 20;
+	this.temperature = this.DEFAULT_TEMPERATURE;
+};
+
 Thermostat.prototype.isMaximumTemperature = function() {
 	if (this.isPowerSavingModeOn() === false) {
 		return this.temperature === this.MAX_LIMIT_PSM_OFF;

@@ -41,12 +41,30 @@ describe('Thermostat', function(){
   		expect(thermostat.isPowerSavingModeOn()).toBe(true);
 	});
 
+	it('Can be reset to the default temperature ', function(){
+		for (var i = 0; i < 6; i++) {
+			thermostat.up();
+		}
+		thermostat.resetTemperature();
+		expect(thermostat.getCurrentTemperature()).toEqual(20);
+	});
+
 	describe('When power saving mode on', function(){
 		it('Has a maximum temperature of 25 degree', function(){
 			for (var i = 0; i < 6; i++) {
 				thermostat.up();
 			}
 			expect(thermostat.getCurrentTemperature()).toEqual(25);
+		});
+	});
+
+	describe('When power saving mode off', function(){
+		it('Has a maximum temperature of 32 degree', function(){
+			thermostat.switchPowerSavingModeOff();
+			for (var i = 0; i < 13; i++) {
+				thermostat.up();
+			}
+			expect(thermostat.getCurrentTemperature()).toEqual(32);
 		});
 	});
 });
