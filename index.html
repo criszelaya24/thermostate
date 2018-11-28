@@ -9,10 +9,23 @@
 -ms-transform: scale(0.8);
 transform: scale(0.8);
 }
+
+.low-usage {
+  color: green;
+}
+
+.medium-usage {
+  color: white;
+}
+
+.high-usage {
+  color: red;
+}
     </style>
     <!-- librerias personales -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="js/thermostat.js"></script>
+    <script src="src/thermostat.js"></script>
+    <script src="src/interface.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,17 +39,18 @@ transform: scale(0.8);
     <h1 class="shrink" style="color: white;">Welcome to <br><span class="badge badge-secondary">Thermostate!</span></h1>
    
       <div class="jumbotron" style="background-color: black; color: white; margin-top: 3em;">
-          <h1 class="display-4">Hello! Do you want to change the temperature?</h1>
+        <h3 class="display-4">Hello! Do you want to change the temperature?</h3>
+          <h1 class="display-4" id="temperature"></h1>
           <div class="row">
-            <div class="col-md-3" style="background-color: black;">
+            <div class="col-md-3">
               <button class="btn btn-danger" id="temperature-up">+</button>
               <button class="btn btn-secondary" id="temperature-down">-</button>
             </div>
-          <div class="col-md-6" style="background-color: ;">
+          <div class="col-md-6">
             <h3> Power saving mode is <span id="power-saving-status">ON</span></h3>
             <button id="temperature-reset" class="btn btn-primary btn-lg">Reset</button>
           </div>
-            <div class="col-md-3" style="background-color: black;">
+            <div class="col-md-3">
             <button class="btn btn-success" id="powersaving-on">PSM on</button>
             <button class="btn btn-warning" id="powersaving-off">PSM off</button>
           </div>
