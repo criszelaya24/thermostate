@@ -3,16 +3,26 @@ $(document).ready(function(){
 	updateTemperature();
 	displayWeather('London');
 
-	console.log($);
+	 $.get('http://localhost:3000/', function(data) {
+	 	thermostat.temperature = JSON.parse(data).temp;
+	 	$('#temperature').text(JSON.parse(data).temp + '°');
+	 });
+
+	 function sendTemp() {
+	 	var data = {temp: thermostat.getCurrentTemperature()};
+	 	$.post('http://localhost:3000/update', data);
+	 };
 
 	$('#temperature-up').click(function() {
 		thermostat.up();
 		updateTemperature();
+		sendTemp();
 	});
 
 	$('#temperature-down').click(function(){
 		thermostat.down();
 		updateTemperature();
+		sendTemp();
 	});
 	$('#temperature-reset').click(function(){
 		thermostat.resetTemperature();
